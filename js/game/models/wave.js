@@ -141,7 +141,7 @@
 				var nids = game.client.nidRange(enemies.length, nidBase, nid);
 				nids.apply(enemies);
 				for(var index = 0, len = enemies.length; index < len; index++) {
-					enemies[index].spinup(delta);
+					enemies[index].spinup(game, delta);
 				}
 				game.add(enemies);
 		});

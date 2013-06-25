@@ -156,7 +156,7 @@
 
 			},
 
-			spinup: function(delta) {
+			spinup: function(game, delta) {
 				if (delta <= 0) return;
 				while(delta > 0.25) {
 					this.tick(game, 0.25);
@@ -194,14 +194,15 @@
 			},
 
 			post: function(packet, mobile, args) {
-				var now		= args[1],
+				var game	= args[0],
+					now		= args[1],
 					props	= Mobile.SYNC.STATE_FUNCTIONS;
 
 				mobile.cx = mobile.x + mobile.width * 0.5;
 				mobile.cy = mobile.y + mobile.height * 0.5;
 
 				// Catch up any required motion.
-				mobile.spinup((now - packet[props.next]) * 0.001);
+				mobile.spinup(game, (now - packet[props.next]) * 0.001);
 			},
 
 			instance: function(packet, args, indices) {
