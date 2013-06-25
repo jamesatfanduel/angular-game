@@ -1,0 +1,288 @@
+
+
+/** ------------------------------ GENERAL---------------------------------- */
+
+body, html { height: 100%; font-family: Arial,Helvetica,Sans-Serif; }
+body { margin: 0px; padding: 0px; background: black; }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none;
+}
+
+div#game div.scoring pre, div#game div.overlay pre {
+	margin:			0px;
+	font-family:	Verdana;
+}
+
+div#game, div#game svg {
+	width:		100%;
+	height:		100%;
+	margin:		0;
+	padding:	0;
+}
+
+div#game svg {
+	position:	absolute;
+	z-index:	200;
+	display:	block;
+}
+
+
+/** ------------------------------ BACKDROP---------------------------------- */
+
+div#game .backdrop.first {
+	z-index:	100;
+	position:	absolute;
+	width:		100%;
+	height:		100%;
+	background: url(http://d3jq933qs9sq9.cloudfront.net/game/img/space.jpg) top left repeat;
+}
+
+div#game .backdrop.second {
+	z-index:	100;
+	position:	absolute;
+	width:		100%;
+	height:		100%;
+	background: url(http://d3jq933qs9sq9.cloudfront.net/game/img/starfield.png) top left repeat;
+}
+
+
+/** ------------------------------ ENTITIES --------------------------------- */
+
+div#game g.player {
+	fill: white;
+}
+
+div#game g.enemy polygon {
+	fill: green;
+}
+
+div#game .bullets g.player path {
+	stroke:			red;
+	stroke-width:	2;
+	fill:			yellow;
+}
+
+div#game .bullets g.enemy path {
+	stroke:			blue;
+	stroke-width:	2;
+	fill:			white;
+}
+
+
+/** ------------------------------ OVERLAY ---------------------------------- */
+
+div#game div.overlay {
+	z-index:	300;
+	color:		white;
+	position:	absolute;
+	font-size:	24px;
+	opacity:	0.5;
+	margin:		8px;
+}
+
+
+/** --------------------------- STAGE OVERLAY ------------------------------- */
+
+div#game div.stage {
+	font-size:	50px;
+	opacity:	0.4;
+}
+
+
+/** -------------------------- SCORING OVERLAY ------------------------------ */
+
+div#game div.overlay.scoring {
+	top:			0px;
+	right:			0px;
+	font-size:		36px;
+	opacity:		0.7;
+}
+
+div#game div.scoring div.player {
+	width:			500px;
+	height:			70px;
+}
+
+div#game div.scoring div.player pre {
+	float:			right;
+}
+
+div#game div.scoring.ready svg {
+	width:			40px;
+	right:			0px;
+}
+
+div#game div.scoring.ready div.player pre {
+	margin-right:	40px;
+}
+
+div#game div.scoring.ready svg  circle {
+	fill:			red;
+	opacity:		0.6;
+}
+
+div#game div.scoring.ready svg.ready circle {
+	fill:			green;
+	opacity:		1;
+}
+
+div#game div.scoring div.player pre.name {
+	position:		absolute;
+	right:			0px;
+	margin-top:		38px;
+	font-size:		20px;
+}
+
+
+/** ---------------------------- TITLE PAGE --------------------------------- */
+
+@keyframes pulse {
+	0%		{ opacity:	1; }
+	50%		{ opacity:	0.2; }
+	100%	{ opacity:	1; }
+}
+
+@keyframes fade {
+	0%		{ opacity:	1; }
+	80%		{ opacity:	1; }
+	100%	{ opacity:	0; }
+}
+
+@-webkit-keyframes pulse {
+	0%		{ opacity:	1; }
+	50%		{ opacity:	0.2; }
+	100%	{ opacity:	1; }
+}
+
+@-webkit-keyframes fade {
+	0%		{ opacity:	1; }
+	80%		{ opacity:	1; }
+	100%	{ opacity:	0; }
+}
+
+div#game div.title div.frame {
+	position:		absolute;
+	background:		black;
+	width:			500px;
+	height:			350px;
+	opacity:		0.5;
+	border-radius:	32px;
+}
+
+div#game div.title div.text {
+	margin-top:		16px;
+	position:		absolute;
+	width:			500px;
+}
+
+div#game div.title {
+	position:		absolute;
+	left:			50%;
+	top:			50%;
+	width:			500px;
+	height:			350px;
+	margin-left:	-250px;
+	margin-top:		-175px;
+	text-align:		center;
+	opacity:		0.8;
+	z-index:		300;
+	font-size:		50px;
+	color:			white;
+}
+
+div#game div.title p {
+	margin:			0px;
+	text-transform:	uppercase;
+}
+
+div#game div.title p.lower {
+	text-transform:	lowercase;
+}
+
+div#game div.title p.start {
+	text-transform:		lowercase;
+	margin-top:			64px;
+	animate:			pulse 1s ease-in-out infinite 0 both;
+	-webkit-animation:	pulse 1s ease-in-out infinite 0 both;
+	font-size:			24px;
+}
+
+
+/** ------------------------- OBTAIN NAME DIALOG ---------------------------- */
+
+div#game div.title.obtainname {
+	width:			400px;
+	margin-left:	-200px;
+	height:			300px;
+	margin-top:		-150px;
+}
+
+div#game div.title.obtainname button {
+	background: 	none;
+	font-size:		36px;
+	width:			200px;
+	border:			4px solid white;
+	border-radius:	16px;
+	color:			white;
+	text-transform:	uppercase;
+	opacity:		0.5;
+}
+
+div#game div.title.obtainname button:hover {
+	opacity:		1;
+}
+
+div#game div.title.obtainname input {
+	display:		block;
+	width:			400px;
+	font-size:		36px;
+	text-align:		center;
+	border:			none;
+	border-radius:	8px;
+}
+
+/** ------------------------- GAME OVER MESSAGE ----------------------------- */
+
+div#game div.title.gameover {
+	height:				60px;
+	margin-top:			-30px;
+	animate:			fade 5s ease-in-out 1 0 both;
+	-webkit-animation:	fade 5s ease-in-out 1 0 both;
+}
+
+
+/** --------------------------- STATS OVERLAY ------------------------------- */
+
+div#game div.overlay.stats {
+	bottom:		0px;
+	left:		0px;
+	font-size:	24px;
+}
+
+
+/** ------------------------------ EFFECTS ---------------------------------- */
+
+g.effect.explosion.frame0 circle.outer {
+	stroke:				black;
+	stroke-width:		2;
+	opacity:			0.5;
+	fill:				red;
+}
+
+g.effect.explosion.frame1 circle.outer {
+	transition:			all 1s;
+	opacity:			0;
+}
+
+g.effect.explosion.frame0 circle.inner {
+	fill:				yellow;
+	opacity:			0.8;
+}
+
+g.effect.explosion.frame1 circle.inner {
+	transition:			all 1.5s;
+	fill:				red;
+	opacity:			0;
+}
+

@@ -1,0 +1,27 @@
+{
+  "name": "websocket-relay",
+  "preferGlobal": true,
+  "version": "0.1.0",
+  "author": "James Andrews <james@fanduel.com>",
+  "description": "a simple websocket relay server",
+  "bin": {
+    "websocket-relay": "./bin/websocket-relay.js"
+  },
+  "scripts": {
+    "start": "node ./bin/websocket-relay.js"
+  },
+  "main": "./lib/websocket-relay",
+  "keywords": [
+    "websocket",
+    "relay",
+    "server"
+  ],
+  "dependencies" : {
+    "websocket.io"   :  "0.2.1"
+  },
+  "analyze": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
